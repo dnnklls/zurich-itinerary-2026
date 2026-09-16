@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zürich — ZRH Layover, 17–19 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#ffffff; --bg2:#f5f5f7; --text:#1d1d1f; --text2:#6e6e73;
+    --accent:#0071e3; --red:#d70015; --green:#1d9d50;
+    --line:rgba(0,0,0,.09); --line2:rgba(0,0,0,.06); --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:"SF Pro Text",-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;
+    background:var(--bg); color:var(--text);
+    font-size:17px; line-height:1.5; letter-spacing:-.012em; padding-bottom:60px;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  ::selection{background:rgba(0,113,227,.16)}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:740px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;color:var(--accent)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;height:52px;
+    background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+  nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+  nav .brand{font-weight:600;font-size:15px;letter-spacing:-.02em}
+  nav .links{display:flex;gap:20px}
+  nav .links a{color:var(--text);font-size:13px;font-weight:400;opacity:.85}
+  nav .links a:hover{opacity:1;color:var(--accent)}
+  @media(max-width:560px){nav .links a:nth-child(1),nav .links a:nth-child(3){display:none}}
+
+  /* HERO */
+  header.hero{padding:88px 0 48px}
+  @media(max-width:520px){header.hero{padding:60px 0 40px}}
+  .hero h1{font-size:clamp(52px,12vw,84px);font-weight:700;letter-spacing:-.03em;line-height:1.02;margin:14px 0 0}
+  .hero .lede{font-size:clamp(20px,3vw,26px);font-weight:400;color:var(--text2);letter-spacing:-.02em;line-height:1.32;margin-top:18px;max-width:30ch}
+  .flights{margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .flights .fr{display:flex;align-items:baseline;gap:14px;padding:16px 0;border-bottom:1px solid var(--line2)}
+  .flights .fr:last-child{border-bottom:none}
+  .flights .dir{font-size:13px;font-weight:600;color:var(--text2);width:64px;flex:0 0 auto}
+  .flights .when{font-weight:500;font-variant-numeric:tabular-nums}
+  .flights .code{margin-left:auto;font-size:14px;color:var(--text2);font-variant-numeric:tabular-nums}
+  .specs{margin-top:28px;background:var(--bg2);border-radius:var(--radius);display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
+  @media(max-width:520px){.specs{grid-template-columns:repeat(2,1fr)}}
+  .specs .s{padding:18px 20px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+  .specs .s .k{font-size:12px;color:var(--text2);font-weight:500}
+  .specs .s .v{font-size:18px;font-weight:600;letter-spacing:-.02em;margin-top:5px;line-height:1.2}
+  .specs .s .v small{display:block;font-size:12px;font-weight:400;color:var(--text2);letter-spacing:-.01em;margin-top:3px}
+
+  /* SECTIONS */
+  section{padding:60px 0 0;scroll-margin-top:64px}
+  .shead{margin-bottom:8px}
+  .shead h2{font-size:clamp(30px,5vw,40px);font-weight:700;letter-spacing:-.028em;line-height:1.08}
+  .shead p{color:var(--text2);font-size:18px;margin-top:10px;max-width:52ch}
+
+  /* SAVE-THIS GRID (deadlines + essentials) */
+  .save{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.save{grid-template-columns:1fr}}
+  .panel{border-radius:var(--radius);padding:22px 24px}
+  .panel .ph{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .panel .ph svg{width:19px;height:19px;flex:0 0 auto}
+  .panel .ph .t{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+  .deadlines{background:#fff5f4;border:1px solid rgba(215,0,21,.16)}
+  .deadlines .ph svg,.deadlines .ph .t{color:var(--red)}
+  .dl{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(215,0,21,.1);gap:12px}
+  .dl:last-of-type{border-bottom:none}
+  .dl .k{font-size:14.5px;color:#5c1015;font-weight:500}
+  .dl .v{font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--red);font-variant-numeric:tabular-nums}
+  .deadlines .foot{font-size:13px;color:#7a3a3a;margin-top:12px;line-height:1.45}
+  .ess{background:var(--bg2)}
+  .ess .ph svg,.ess .ph .t{color:var(--text)}
+  .ess .er{padding:7px 0;font-size:14.5px;border-bottom:1px solid var(--line2)}
+  .ess .er:last-of-type{border-bottom:none}
+  .ess .er .k{color:var(--text2);font-size:12px;font-weight:500;display:block}
+  .ess .er .v{display:block;font-weight:500;margin-top:1px}
+  .ess .er .v.cn{font-size:15px}
+  .ess .emg{color:var(--red);font-weight:600}
+
+  /* TIMELINE */
+  .timeline{margin-top:24px;border-top:1px solid var(--line)}
+  .timeline .row{display:flex;gap:18px;padding:18px 2px;border-bottom:1px solid var(--line)}
+  .timeline .tm{flex:0 0 76px;font-weight:600;font-variant-numeric:tabular-nums;font-size:15px}
+  .timeline .tm small{display:block;font-weight:400;color:var(--text2);font-size:12px}
+  .timeline .tx .h{font-weight:600}
+  .timeline .tx .d{color:var(--text2);font-size:15px;margin-top:3px}
+  .timeline .tx .d b{color:var(--text);font-weight:600}
+
+  /* PLAN PARTS */
+  .part{margin-top:38px}.part:first-of-type{margin-top:24px}
+  .part-h{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .part-h svg{width:21px;height:21px;color:var(--accent);flex:0 0 auto}
+  .part-h .t{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--text2)}
+  .part-h .ln{flex:1;height:1px;background:var(--line)}
+  .card{background:var(--bg2);border-radius:var(--radius);padding:24px 26px;margin-bottom:12px}
+  .card h3{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.22}
+  .card h3 .tag{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.02em;margin-left:8px;vertical-align:middle}
+  .card p{color:#33333a;font-size:16px;margin-top:9px;line-height:1.5}
+  .card .meta{margin-top:16px;padding-top:14px;border-top:1px solid var(--line2);display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13.5px;color:var(--text2);font-variant-numeric:tabular-nums}
+  .card .meta b{color:var(--text);font-weight:600}
+
+  /* PLACE BLOCK + BUTTONS */
+  .place{margin-top:16px;padding-top:15px;border-top:1px solid var(--line2)}
+  .place .pn{font-size:15px;font-weight:600}
+  .place .pn .en{color:var(--text2);font-weight:400}
+  .place .pa{font-size:13.5px;color:var(--text2);margin-top:2px}
+  .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .btn{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:500;
+    padding:8px 14px;border-radius:980px;border:1px solid var(--line);background:#fff;color:var(--accent);
+    cursor:pointer;line-height:1;transition:background .15s,color .15s,border-color .15s;-webkit-tap-highlight-color:transparent}
+  .btn:hover{background:#f0f6ff}
+  .btn:active{background:#e3eefb}
+  .btn.ghost{color:var(--text)}
+  .btn.copied{color:var(--green);border-color:rgba(29,157,80,.4);background:#f0faf3}
+  .btn svg{width:15px;height:15px}
+
+  /* FALLBACKS */
+  .fallbacks{margin-top:24px;display:grid;gap:12px}
+  .fb{border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px}
+  .fb .fbh{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+  .fb .fbh svg{width:19px;height:19px;color:var(--accent);flex:0 0 auto}
+  .fb h3{font-size:18px;font-weight:600;letter-spacing:-.02em}
+  .fb p{color:var(--text2);font-size:15.5px;margin-top:2px}
+  .fb ul{list-style:none;margin-top:10px;display:grid;gap:8px}
+  .fb li{position:relative;padding-left:20px;font-size:15.5px;color:#33333a}
+  .fb li::before{content:"";position:absolute;left:2px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  /* DEPART */
+  .depart{margin-top:24px;background:var(--bg2);border-radius:var(--radius);padding:26px}
+  .depart .lab{font-size:13px;color:var(--text2);font-weight:500}
+  .depart .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .depart .stat .k{font-size:12px;color:var(--text2);font-weight:500}
+  .depart .stat .n{font-size:32px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:2px}
+  .depart .foot{font-size:14px;color:var(--text2);margin-top:18px;line-height:1.5}
+
+  /* BASE / RETURN */
+  .base{margin-top:14px;background:var(--text);color:#fff;border-radius:var(--radius);padding:24px 26px}
+  .base .bt{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#a9d0ff}
+  .base .bn{font-size:19px;font-weight:600;margin-top:7px;letter-spacing:-.01em}
+  .base .ba{font-size:14px;color:#c7c7cc;margin-top:3px}
+  .base .btns{margin-top:14px}
+  .base .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16);color:#fff}
+  .base .btn:hover{background:rgba(255,255,255,.18)}
+  .base .btn.copied{color:#7ee2a0;background:rgba(126,226,160,.16);border-color:rgba(126,226,160,.4)}
+
+  /* DIRECTORY */
+  .dir-list{margin-top:20px;border-top:1px solid var(--line)}
+  .dir-item{padding:20px 2px;border-bottom:1px solid var(--line)}
+  .dir-item .dh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .dir-item .dh .nm{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .dir-item .dh .role{font-size:12px;color:var(--text2);font-weight:500;margin-left:auto}
+  .dir-item .cn{font-size:15px;margin-top:3px}
+  .dir-item .ad{font-size:13.5px;color:var(--text2);margin-top:2px}
+
+  /* LOGISTICS */
+  .logi{margin-top:22px;border-top:1px solid var(--line)}
+  .logi .row{display:flex;gap:16px;padding:20px 2px;border-bottom:1px solid var(--line)}
+  .logi .ic{flex:0 0 24px;color:var(--accent);margin-top:1px}
+  .logi .ic svg{width:23px;height:23px}
+  .logi h4{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .logi p{color:var(--text2);font-size:15.5px;margin-top:4px;line-height:1.5}
+  .logi p b{color:var(--text);font-weight:600}
+
+  footer{margin-top:60px;border-top:1px solid var(--line);padding:28px 0 40px}
+  footer p{font-size:12px;color:var(--text2);line-height:1.7}
+
+  /* STICKY DEADLINE BAR */
+  .bar{position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(20px);
+    -webkit-backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line)}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:9px;padding-bottom:9px}
+  .bar a{display:flex;align-items:center;gap:7px;color:var(--text);font-size:13px;font-weight:500}
+  .bar .times{font-variant-numeric:tabular-nums}
+  .bar .times b{color:var(--red);font-weight:700}
+  .bar .times .sep{color:var(--line);margin:0 7px}
+  .bar svg{width:15px;height:15px;color:var(--red);flex:0 0 auto}
+  .bar .toBase{color:var(--accent);font-weight:600;white-space:nowrap}
+  @media(max-width:480px){.bar .times .lj{display:none}}
+
+  @media(prefers-reduced-motion:no-preference){
+    .fade{opacity:0;transform:translateY(12px);animation:fu .7s cubic-bezier(.2,.6,.2,1) forwards}
+    .fade.d1{animation-delay:.06s}.fade.d2{animation-delay:.12s}.fade.d3{animation-delay:.18s}
+    @keyframes fu{to{opacity:1;transform:none}}
+  }
+</style>
+
+  <nav>
+    <div class="wrap">
+      <span class="brand">Zürich</span>
+      <span class="links">
+        <a href="#day">The days</a>
+        <a href="#home">Getting home</a>
+        <a href="#places">Places</a>
+      </span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow fade">ZRH Layover · 17–19 September 2026</div>
+      <h1 class="fade d1">Zürich.</h1>
+      <p class="lede fade d2">Two full days, not one stolen afternoon. Sleep off Thursday morning, then take the lake, the old town, and a waterfall.</p>
+
+      <div class="flights fade d3">
+        <div class="fr"><span class="dir">Arrive</span><span class="when">Thu 17 Sep · 08:15</span><span class="code">SQ346</span></div>
+        <div class="fr"><span class="dir">Depart</span><span class="when">Sat 19 Sep · 11:40</span><span class="code">SQ345</span></div>
+      </div>
+
+      <div class="specs fade d3">
+        <div class="s"><div class="k">Staying at</div><div class="v">Kameha Grand<small>Glattpark · Tram 10 at the door</small></div></div>
+        <div class="s"><div class="k">Usable time</div><div class="v">~47 hours<small>Two afternoons + two evenings</small></div></div>
+        <div class="s"><div class="k">Weather</div><div class="v">21°C / 13°C<small>Mild · cold after dark</small></div></div>
+        <div class="s"><div class="k">Money</div><div class="v">CHF<small>Cards &amp; Apple Pay everywhere</small></div></div>
+        <div class="s"><div class="k">Time</div><div class="v">GMT+2<small>Singapore is 6h ahead</small></div></div>
+        <div class="s"><div class="k">Around</div><div class="v">Tram 10<small>24h ZVV pass CHF 14.40</small></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- SAVE THIS -->
+    <section id="save" style="padding-top:8px">
+      <div class="shead">
+        <div class="eyebrow">Save this</div>
+        <h2>The two cards that matter.</h2>
+        <p>Screenshot these before you land. On a layover, deadlines beat sightseeing.</p>
+      </div>
+      <div class="save">
+        <div id="deadlines" class="panel deadlines">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg>
+            <span class="t">Hard deadlines</span>
+          </div>
+          <div class="dl"><span class="k">Latest leave city (Fri)</span><span class="v">21:45</span></div>
+          <div class="dl"><span class="k">Sleep target (Fri)</span><span class="v">23:30</span></div>
+          <div class="dl"><span class="k">Call</span><span class="v">08:45</span></div>
+          <div class="dl"><span class="k">Pickup</span><span class="v">09:45</span></div>
+          <div class="dl"><span class="k">SQ345 departs</span><span class="v">11:40</span></div>
+          <p class="foot">No alcohol within 10 hours of duty — company policy, and Swiss authorities run random blood-alcohol tests on crew. Last drink Friday: 22:45.</p>
+        </div>
+
+        <div class="panel ess" data-addr="Kameha Grand Zurich, Dufaux-Strasse 1, CH-8152 Opfikon, Switzerland">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.3"/><path d="M8.5 7l1.3-2.3h4.4L19.5 7"/></svg>
+            <span class="t">Offline essentials</span>
+          </div>
+          <div class="er"><span class="k">Hotel</span><span class="v cn">Kameha Grand Zurich</span><span class="v" style="color:var(--text2);font-size:13px">Dufaux-Strasse 1, 8152 Opfikon · Glattpark tram stop, 5 min walk</span></div>
+          <div class="er"><span class="k">Flight out</span><span class="v">SQ345 · 11:40 &nbsp;(call 08:45 · pickup 09:45)</span></div>
+          <div class="er"><span class="k">Carry</span><span class="v">Passport · crew ID · a contactless card · light jacket · 24h ZVV ticket on your phone</span></div>
+          <div class="er"><span class="k">Emergency</span><span class="v"><span class="emg">112</span> general · <span class="emg">117</span> police · <span class="emg">144</span> ambulance · <span class="emg">118</span> fire</span></div>
+          <div class="er"><span class="k">Hotel desk</span><span class="v">+41 44 525 5000</span></div>
+          <div class="btns">
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy hotel address</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shead">
+        <div class="eyebrow">The shape of it</div>
+        <h2>Your 47 hours.</h2>
+        <p>A morning arrival and a late-morning call out. That is a rare ZRH pattern — you get a soft Thursday and one genuinely full Friday.</p>
+      </div>
+      <div class="timeline">
+        <div class="row"><div class="tm">08:15<small>Thu</small></div><div class="tx"><div class="h">Land at ZRH on SQ346</div><div class="d">SkyMetro to Terminal B, crew door beside immigration, then the hotel bus from the arrivals pick-up point. Glattpark is ten minutes away.</div></div></div>
+        <div class="row"><div class="tm">~09:30</div><div class="tx"><div class="h">Check in at the Kameha Grand</div><div class="d">You have been awake all night. Sleep properly, then take Thursday gently.</div></div></div>
+        <div class="row"><div class="tm">All day<small>Fri</small></div><div class="tx"><div class="h">The full day</div><div class="d">Rhine Falls in the morning, old town in the afternoon, a hill at sunset. <b>This is the day.</b></div></div></div>
+        <div class="row"><div class="tm">08:45<small>Sat</small></div><div class="tx"><div class="h">Call for SQ345</div><div class="d">Pickup <b>09:45</b>, departs <b>11:40</b>. Civilised — but Friday night still has to end early.</div></div></div>
+      </div>
+    </section>
+
+    <section id="day">
+      <div class="shead">
+        <div class="eyebrow">Thursday 17 September</div>
+        <h2>Day one: the easy one.</h2>
+        <p>You lost a night on the aircraft. Sleep first, then one tram ride into the old town and back. Nothing that needs a ticket or a booking.</p>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 3v3"/><path d="M5.6 8.6l1.4 1.4"/><path d="M18.4 8.6l-1.4 1.4"/></svg>
+          <span class="t">Morning</span><span class="ln"></span>
+        </div>
+        <div class="card">
+          <h3>Land, and sleep it off.</h3>
+          <p>In the room by about half nine. Close the curtains and take a real four-hour sleep — Zürich is six hours behind Singapore, so your body thinks it is mid-afternoon. Set an alarm for 13:30 or Thursday evaporates.</p>
+          <div class="meta"><span><b>~4h sleep</b></span><span>Up by <b>13:30</b></span></div>
+        </div>
+        <div class="card">
+          <h3>Crew breakfast, if you are awake for it.<span class="tag">CHF 19</span></h3>
+          <p>The hotel does the buffet breakfast at a crew rate of CHF 19, no reservation needed. Worth it — Swiss food out in town starts at roughly double that.</p>
+          <div class="meta"><span>Crew rate <b>CHF 19</b></span><span>20% off all other F&amp;B</span></div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <span class="t">Afternoon</span><span class="ln"></span>
+        </div>
+        <div class="card" data-cn="Glattpark, Zürich" data-addr="Thurgauerstrasse, 8152 Opfikon, Switzerland" data-didi="Glattpark tram stop, Opfikon">
+          <h3>Tram 10, all the way in.</h3>
+          <p>Glattpark stop is a five-minute walk from the lobby. Tram 10 runs straight to Zürich Hauptbahnhof in about thirty minutes. Buy a <b>24-hour 3-zone ticket for CHF 14.40</b> at the stop machine or in the ZVV app — it covers everything including your ride back.</p>
+          <div class="meta"><span>Tram <b>10</b> · ~30 min</span><span><b>CHF 14.40</b> / 24h</span><span>5 min walk to the stop</span></div>
+          <div class="place">
+            <div class="pn">Glattpark <span class="en">· tram stop</span></div>
+            <div class="pa">Thurgauerstrasse, 8152 Opfikon</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-cn="Lindenhof, Zürich" data-addr="Lindenhof, 8001 Zürich, Switzerland" data-didi="Lindenhof, 8001 Zürich">
+          <h3>Start high, at the Lindenhof.<span class="tag">Free</span></h3>
+          <p>A gravel terrace of lime trees above the river, where the Roman fort used to be. It is the one spot where the whole old town, the Limmat and the church towers line up at once. Ten minutes on foot from the station.</p>
+          <div class="meta"><span><b>Free</b></span><span>Open always</span><span>10 min walk from HB</span></div>
+          <div class="place">
+            <div class="pn">Lindenhof <span class="en">· old town viewpoint</span></div>
+            <div class="pa">Lindenhof, 8001 Zürich</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-cn="Niederdorfstrasse, Zürich" data-addr="Niederdorfstrasse, 8001 Zürich, Switzerland" data-didi="Niederdorfstrasse, 8001 Zürich">
+          <h3>Drop down into Niederdorf.</h3>
+          <p>Cross the Rathausbrücke and wander the lanes on the east bank — cobbles, fountains you can drink from, small shops, no plan required. Follow the river south and you will come out at the lake on your own.</p>
+          <div class="meta"><span><b>Free</b></span><span>~1 hour, aimless</span></div>
+          <div class="place">
+            <div class="pn">Niederdorf <span class="en">· old town east bank</span></div>
+            <div class="pa">Niederdorfstrasse, 8001 Zürich</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 9V3"/><path d="M9 6l3 3 3-3"/><path d="M2 13h2M20 13h2"/></svg>
+          <span class="t">Evening</span><span class="ln"></span>
+        </div>
+        <div class="card" data-cn="Bürkliplatz, Zürich" data-addr="Bürkliplatz, 8001 Zürich, Switzerland" data-didi="Bürkliplatz, 8001 Zürich">
+          <h3>The lake at golden hour.<span class="tag">Free</span></h3>
+          <p>Bürkliplatz is where the river meets Lake Zürich. Walk the promenade east towards Zürichhorn — swans, the Alps on the far shore if the air is clear, and the sun going down behind the hills around <b>19:30</b>. This is the picture everyone remembers of Zürich.</p>
+          <p style="margin-top:10px">If your legs still work, the ZSG ticket office at Bürkliplatz sells the 1h30 short lake cruise from about CHF 9.40, and a Zürich day pass discounts it. Afternoon departures at 15:25 and 17:50.</p>
+          <div class="meta"><span>Sunset <b>~19:30</b></span><span>Promenade is free</span><span>Boat from <b>CHF 9.40</b></span></div>
+          <div class="place">
+            <div class="pn">Bürkliplatz <span class="en">· lake promenade &amp; boat pier</span></div>
+            <div class="pa">Bürkliplatz, 8001 Zürich</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-cn="Zeughauskeller, Zürich" data-addr="Bahnhofstrasse 28a, 8001 Zürich, Switzerland" data-didi="Zeughauskeller, Bahnhofstrasse 28a, 8001 Zürich">
+          <h3>Dinner in the old arsenal.</h3>
+          <p>The Zeughauskeller is a 1487 armoury turned beer hall — long shared tables, halberds on the walls, and the Swiss things you actually came for: rösti, sausages, Zürcher Geschnetzeltes. Loud, unpretentious, walk-in friendly if you go early. Budget CHF 30–45.</p>
+          <div class="meta"><span>11:30–23:00</span><span><b>CHF 30–45</b></span><span>Off Bahnhofstrasse</span></div>
+          <div class="place">
+            <div class="pn">Zeughauskeller <span class="en">· historic beer hall</span></div>
+            <div class="pa">Bahnhofstrasse 28a, 8001 Zürich</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <span class="t">Night</span><span class="ln"></span>
+        </div>
+        <div class="card">
+          <h3>Back on tram 10, early.</h3>
+          <p>Leave the centre by about 21:30 and you are in bed before eleven. Thursday's only job is to buy you a strong Friday — do not let the jet lag talk you into a long night.</p>
+          <div class="meta"><span>Leave centre <b>~21:30</b></span><span>Sleep by <b>23:00</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="day2">
+      <div class="shead">
+        <div class="eyebrow">Friday 18 September</div>
+        <h2>Day two: the real one.</h2>
+        <p>One long loop. North to the waterfall in the morning, back through the old town, up a hill for sunset. Every leg starts from a station you are already standing in.</p>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 3v3"/><path d="M5.6 8.6l1.4 1.4"/><path d="M18.4 8.6l-1.4 1.4"/></svg>
+          <span class="t">Morning</span><span class="ln"></span>
+        </div>
+        <div class="card" data-cn="Rheinfall, Neuhausen am Rheinfall" data-addr="Rheinfallquai, 8212 Neuhausen am Rheinfall, Switzerland" data-didi="Rheinfall, Neuhausen am Rheinfall">
+          <h3>Rhine Falls, before the crowds.<span class="tag">Half day</span></h3>
+          <p>Europe's largest waterfall, and it is closer than you think. Take tram 10 a few stops to <b>Zürich Oerlikon</b> — no need to go into the main station — then the direct train to <b>Neuhausen Rheinfall</b>, about 42 minutes, every half hour. Leave the hotel around 08:00 and you are standing over the water by half nine, ahead of the coach tours.</p>
+          <p style="margin-top:10px">Walk the Schloss Laufen side: the viewing platforms drop you down the cliff until you are almost in the spray. The <b>Känzeli</b> platform is the one worth queueing for. Castle grounds and platforms about CHF 5.</p>
+          <div class="meta"><span>Tram 10 + train · <b>~1h door to door</b></span><span>Platforms <b>~CHF 5</b></span><span>Outside the Zürich zones — buy a separate return</span></div>
+          <div class="place">
+            <div class="pn">Rheinfall <span class="en">· Rhine Falls, Neuhausen</span></div>
+            <div class="pa">Rheinfallquai, 8212 Neuhausen am Rheinfall</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-cn="Schloss Laufen am Rheinfall" data-addr="Schloss Laufen, 8447 Dachsen, Switzerland" data-didi="Schloss Laufen am Rheinfall, 8447 Dachsen">
+          <h3>The boat to the middle rock.</h3>
+          <p>The little Mändli boats run from the foot of the falls out to the rock standing in the middle of them, and you can climb it. Around CHF 12, roughly fifteen minutes, and it is the difference between seeing the falls and being in them. Cash or card at the jetty.</p>
+          <div class="meta"><span>From <b>~CHF 12</b></span><span>~15 min</span><span>Weather dependent</span></div>
+          <div class="place">
+            <div class="pn">Schloss Laufen <span class="en">· castle side &amp; boat jetty</span></div>
+            <div class="pa">Schloss Laufen, 8447 Dachsen</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <span class="t">Afternoon</span><span class="ln"></span>
+        </div>
+        <div class="card" data-cn="Grossmünster, Zürich" data-addr="Grossmünsterplatz, 8001 Zürich, Switzerland" data-didi="Grossmünster, Grossmünsterplatz, 8001 Zürich">
+          <h3>Climb the Grossmünster.<span class="tag">Friday only</span></h3>
+          <p>Ride the train back to Zürich HB — you will be in the centre by about two. The Karlsturm tower of the Grossmünster is <b>187 steps</b> and opens onto the best rooftop view in the city: the old town, the river, the lake, the hills behind.</p>
+          <p style="margin-top:10px"><b>Check this before you walk over.</b> Since August the tower only opens Friday to Sunday — Friday is your one shot — and the church is under renovation through 2026–27, so parts can close at short notice. Last entry around 16:30. Church is free; tower CHF 5, tickets on the door.</p>
+          <div class="meta"><span>Mon–Sat 10:00–17:00</span><span>Tower <b>CHF 5</b></span><span>187 steps · 30–45 min</span></div>
+          <div class="place">
+            <div class="pn">Grossmünster <span class="en">· Karlsturm tower</span></div>
+            <div class="pa">Grossmünsterplatz, 8001 Zürich</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+        <div class="card" data-cn="Confiserie Sprüngli Paradeplatz, Zürich" data-addr="Bahnhofstrasse 21, 8001 Zürich, Switzerland" data-didi="Confiserie Sprüngli, Paradeplatz, 8001 Zürich">
+          <h3>Sprüngli at Paradeplatz.</h3>
+          <p>Five minutes across the bridge. Luxemburgerli are the thing — small, light macarons that do not survive a long flight, so eat them here. This is also the easy answer for gifts home: a box travels fine in hand baggage.</p>
+          <div class="meta"><span>Mon–Fri to 18:30</span><span>Box from <b>~CHF 15</b></span><span>Bahnhofstrasse 21</span></div>
+          <div class="place">
+            <div class="pn">Confiserie Sprüngli <span class="en">· Paradeplatz</span></div>
+            <div class="pa">Bahnhofstrasse 21, 8001 Zürich</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 9V3"/><path d="M9 6l3 3 3-3"/><path d="M2 13h2M20 13h2"/></svg>
+          <span class="t">Evening</span><span class="ln"></span>
+        </div>
+        <div class="card" data-cn="Uetliberg, Zürich" data-addr="Uetliberg, 8143 Uitikon, Switzerland" data-didi="Uetliberg Bahnhof, 8143 Uitikon">
+          <h3>Uetliberg for the sunset.<span class="tag">Drop it if you're spent</span></h3>
+          <p>Zürich's own mountain, and you reach it from platform 22 inside the main station. The <b>S10</b> climbs through the woods in twenty minutes; ten minutes uphill on foot from the top station puts the whole lake and the Alps below you. Catch the 18:15 or thereabouts and the light goes gold at <b>19:30</b>.</p>
+          <p style="margin-top:10px">Honest note: after the Rhine Falls this is a long day. If your legs have gone, skip it — the lake promenade does the same job at a tenth of the effort.</p>
+          <div class="meta"><span>S10 from HB · <b>20 min</b></span><span>On your <b>ZVV day pass</b></span><span>Sunset <b>~19:30</b></span></div>
+          <div class="place">
+            <div class="pn">Uetliberg <span class="en">· summit &amp; lookout</span></div>
+            <div class="pa">Uetliberg Bahnhof, 8143 Uitikon · S10 from Zürich HB platform 22</div>
+            <div class="btns">
+              <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+              <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+              <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Last dinner, near the station.</h3>
+          <p>Come down off the hill straight into Zürich HB. Eat around the station or back in Niederdorf, keep it early, and be on tram 10 by <b>21:45</b>. That is the deadline that matters — it is your last night before the flight home.</p>
+          <div class="meta"><span>Leave city <b>21:45</b></span><span>Hotel by <b>22:30</b></span><span>Last drink <b>22:45</b></span></div>
+        </div>
+      </div>
+
+      <div class="part">
+        <div class="part-h">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <span class="t">Night</span><span class="ln"></span>
+        </div>
+        <div class="card">
+          <h3>Pack, then sleep.</h3>
+          <p>Uniform out, bag packed, wake-up call confirmed at reception. Sleep by 23:30 and the 08:45 call is still a full night — the one mercy of this rotation.</p>
+          <div class="meta"><span>Confirm wake-up call at reception</span><span>Sleep by <b>23:30</b></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FALLBACKS -->
+    <section id="fallbacks">
+      <div class="shead">
+        <div class="eyebrow">If things change</div>
+        <h2>Plan B, C, and rain.</h2>
+        <p>The plan above assumes decent weather and a body that cooperates. When neither is true, drop down a level — guilt-free.</p>
+      </div>
+      <div class="fallbacks">
+        <div class="fb">
+          <div class="fbh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2"/><path d="M3.5 12a8.5 8.5 0 0 1 17 0z"/><path d="M12 12v6.5a2.5 2.5 0 0 1-5 0"/></svg>
+            <h3>If it's pouring</h3>
+          </div>
+          <p>September in Zürich rains about one day in three. It does not stop the city.</p>
+          <ul>
+            <li>Drop Uetliberg — the whole point of it is the view.</li>
+            <li>Rhine Falls still works in rain. The falls do not care.</li>
+            <li>Swap the hill for the Kunsthaus, or the Landesmuseum by the station.</li>
+            <li>Bahnhofstrasse and the old town lanes have long covered stretches.</li>
+          </ul>
+        </div>
+        <div class="fb">
+          <div class="fbh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <h3>If you're tired (Plan B)</h3>
+          </div>
+          <p>The night flight hit harder than expected, but you still want a day.</p>
+          <ul>
+            <li>Cut the Rhine Falls. Sleep in, go into town at noon instead.</li>
+            <li>Lindenhof, Niederdorf, Bürkliplatz — the whole thing is one flat walk.</li>
+            <li>Take the 1h30 lake cruise and sit down for all of it.</li>
+            <li>Early dinner, home on tram 10 by nine.</li>
+          </ul>
+        </div>
+        <div class="fb">
+          <div class="fbh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8"/><path d="M5.5 10v9h13v-9"/><path d="M10 19v-5h4v5"/></svg>
+            <h3>If you're completely destroyed (Plan C)</h3>
+          </div>
+          <p>Some rotations just win. Protect the sleep and the flight home.</p>
+          <ul>
+            <li>Do not leave Glattpark.</li>
+            <li>Hotel gym and health club are free to crew; the crew lounge runs 24 hours.</li>
+            <li>Room service until 23:00, 20% off with crew ID.</li>
+            <li>Walk the Glattpark lake behind the hotel and call it a day.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="home">
+      <div class="shead">
+        <div class="eyebrow">Saturday 19 September</div>
+        <h2>Getting home.</h2>
+      </div>
+      <div class="depart">
+        <div class="lab">Kameha Grand Zurich → ZRH Terminal E · SQ345</div>
+        <div class="stat">
+          <div><div class="k">Call</div><div class="n">08:45</div></div>
+          <div><div class="k">Pickup</div><div class="n">09:45</div></div>
+          <div><div class="k">Departs</div><div class="n">11:40</div></div>
+        </div>
+        <p class="foot">Per station info, SQ345 call is 2h55m before departure and pickup 1h55m. The hotel provides the airport transfer and you share it with the tech crew. At the check-in terminal: bulky bag drop first, crew ID at the manned counter, security, then the SkyMetro out to Terminal E. You land back in Singapore at 06:20 on Sunday.</p>
+      </div>
+
+      <div id="base" class="base" data-cn="Kameha Grand Zurich, Opfikon" data-addr="Dufaux-Strasse 1, 8152 Opfikon, Switzerland" data-didi="Kameha Grand Zurich, Dufaux-Strasse 1, 8152 Opfikon">
+        <div class="bt">Take me back to base</div>
+        <div class="bn">Kameha Grand Zurich</div>
+        <div class="ba">Dufaux-Strasse 1, CH-8152 Opfikon (Glattpark) · +41 44 525 5000</div>
+        <div class="btns">
+          <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+          <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+          <button class="btn" data-act="copy" data-copy="didi">Copy for taxi</button>
+          <button class="btn" data-act="copy" data-copy="addr">Copy address</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLACES DIRECTORY -->
+    <section id="places">
+      <div class="shead">
+        <div class="eyebrow">Address book</div>
+        <h2>Places &amp; maps.</h2>
+        <p>Every stop with its full Swiss address. Map buttons search the name directly. "Copy for taxi" gives a driver the name and street in one paste.</p>
+      </div>
+      <div class="dir-list">
+        <div class="dir-item" data-cn="Kameha Grand Zurich, Opfikon" data-addr="Dufaux-Strasse 1, 8152 Opfikon, Switzerland" data-didi="Kameha Grand Zurich, Dufaux-Strasse 1, 8152 Opfikon">
+          <div class="dh"><span class="nm">Kameha Grand Zurich</span><span class="role">Your hotel</span></div>
+          <div class="cn">Autograph Collection · Glattpark</div>
+          <div class="ad">Dufaux-Strasse 1, CH-8152 Opfikon · +41 44 525 5000 · tram 10/12 Glattpark, 5 min walk</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Zürich Hauptbahnhof" data-addr="Bahnhofplatz, 8001 Zürich, Switzerland" data-didi="Zürich Hauptbahnhof, Bahnhofplatz, 8001 Zürich">
+          <div class="dh"><span class="nm">Zürich Hauptbahnhof</span><span class="role">Your hub · tram 10</span></div>
+          <div class="cn">Zürich HB</div>
+          <div class="ad">Bahnhofplatz, 8001 Zürich · the S10 to Uetliberg leaves from platform 22</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Lindenhof, Zürich" data-addr="Lindenhof, 8001 Zürich, Switzerland" data-didi="Lindenhof, 8001 Zürich">
+          <div class="dh"><span class="nm">Lindenhof</span><span class="role">Old town viewpoint</span></div>
+          <div class="cn">Free · open always</div>
+          <div class="ad">Lindenhof, 8001 Zürich · 10 min walk from HB</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Grossmünster, Zürich" data-addr="Grossmünsterplatz, 8001 Zürich, Switzerland" data-didi="Grossmünster, Grossmünsterplatz, 8001 Zürich">
+          <div class="dh"><span class="nm">Grossmünster</span><span class="role">Karlsturm tower</span></div>
+          <div class="cn">Tower CHF 5 · 187 steps</div>
+          <div class="ad">Grossmünsterplatz, 8001 Zürich · tower Fri–Sun only, last entry ~16:30</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Bürkliplatz, Zürich" data-addr="Bürkliplatz, 8001 Zürich, Switzerland" data-didi="Bürkliplatz, 8001 Zürich">
+          <div class="dh"><span class="nm">Bürkliplatz</span><span class="role">Lake promenade &amp; boats</span></div>
+          <div class="cn">ZSG pier · short cruise from CHF 9.40</div>
+          <div class="ad">Bürkliplatz, 8001 Zürich · afternoon departures 15:25 and 17:50</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Zeughauskeller, Zürich" data-addr="Bahnhofstrasse 28a, 8001 Zürich, Switzerland" data-didi="Zeughauskeller, Bahnhofstrasse 28a, 8001 Zürich">
+          <div class="dh"><span class="nm">Zeughauskeller</span><span class="role">Dinner · beer hall</span></div>
+          <div class="cn">CHF 30–45 · 11:30–23:00</div>
+          <div class="ad">Bahnhofstrasse 28a, 8001 Zürich</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Confiserie Sprüngli Paradeplatz, Zürich" data-addr="Bahnhofstrasse 21, 8001 Zürich, Switzerland" data-didi="Confiserie Sprüngli, Paradeplatz, 8001 Zürich">
+          <div class="dh"><span class="nm">Confiserie Sprüngli</span><span class="role">Luxemburgerli · gifts home</span></div>
+          <div class="cn">Paradeplatz flagship</div>
+          <div class="ad">Bahnhofstrasse 21, 8001 Zürich</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Rheinfall, Neuhausen am Rheinfall" data-addr="Rheinfallquai, 8212 Neuhausen am Rheinfall, Switzerland" data-didi="Rheinfall, Neuhausen am Rheinfall">
+          <div class="dh"><span class="nm">Rhine Falls</span><span class="role">Friday morning trip</span></div>
+          <div class="cn">Schloss Laufen platforms · boat to the middle rock</div>
+          <div class="ad">Rheinfallquai, 8212 Neuhausen am Rheinfall · direct train from Zürich Oerlikon, ~42 min</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Uetliberg, Zürich" data-addr="Uetliberg, 8143 Uitikon, Switzerland" data-didi="Uetliberg Bahnhof, 8143 Uitikon">
+          <div class="dh"><span class="nm">Uetliberg</span><span class="role">Sunset lookout</span></div>
+          <div class="cn">S10 from Zürich HB platform 22 · 20 min</div>
+          <div class="ad">Uetliberg Bahnhof, 8143 Uitikon · 10 min uphill walk to the top</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+        <div class="dir-item" data-cn="Flughafen Zürich" data-addr="8058 Zürich-Flughafen, Switzerland" data-didi="Flughafen Zürich, Check-in 3, 8058 Zürich-Flughafen">
+          <div class="dh"><span class="nm">ZRH · Zurich Airport</span><span class="role">Terminal E · departure</span></div>
+          <div class="cn">Kloten · Check-in 3, bulky bag drop</div>
+          <div class="ad">SQ345 leaves from Terminal E via the SkyMetro — but the hotel bus takes you</div>
+          <div class="btns">
+            <a class="btn" data-map="apple" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="btn" data-map="gmaps" target="_blank" rel="noopener">Google Maps</a>
+            <button class="btn ghost" data-act="copy" data-copy="didi">Copy for taxi</button>
+            <button class="btn ghost" data-act="copy" data-copy="addr">Copy address</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="logistics">
+      <div class="shead">
+        <div class="eyebrow">Before you land</div>
+        <h2>Logistics.</h2>
+      </div>
+      <div class="logi">
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
+          <div><h4>Phone and apps</h4><p>Nothing is blocked — Google Maps, WhatsApp and Instagram all work normally. Switzerland is <b>not in the EU</b>, so EU roaming bundles do not cover it: check your plan or buy an eSIM. Get <b>ZVV</b> for tram tickets and <b>SBB Mobile</b> for trains.</p></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19"/></svg></span>
+          <div><h4>Paying for things</h4><p>Swiss francs, and cards work everywhere including trams and ticket machines. Zürich is expensive — a plain lunch is CHF 25–30, a beer CHF 8. Your allowance goes further at the hotel with the 20% crew discount. Duty free back in is CHF 300 of goods.</p></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2"/><path d="M3.5 12a8.5 8.5 0 0 1 17 0z"/><path d="M12 12v6.5a2.5 2.5 0 0 1-5 0"/></svg></span>
+          <div><h4>September weather</h4><p>Around <b>21°C</b> by day and <b>13°C</b> after dark — the drop at sunset is bigger than it sounds, especially on Uetliberg. Pack a light jacket and a compact umbrella. Roughly one day in three sees rain.</p></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><h4>Getting around</h4><p>Tram 10 at the door does everything: hotel to city in 30 minutes, hotel to airport in 9. A <b>3-zone 24-hour ticket is CHF 14.40</b> and covers trams, buses, S-Bahn and the Uetliberg train. Buy before you board — inspectors fine on the spot. Trams stop around midnight.</p></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L3.5 9.2l5.9-.9z"/></svg></span>
+          <div><h4>Watch out for</h4><p>Per station info: pickpockets around the main station and the airport. Avoid <b>Platzspitz park</b> and the ground behind the Landesmuseum, and <b>Langstrasse in Kreis 5</b> after dark. And the <b>10-hour alcohol rule</b> before duty is real — random blood tests happen at European stations.</p></div>
+        </div>
+        <div class="row">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-3h4v3"/></svg></span>
+          <div><h4>Crew perks at the Kameha</h4><p>Buffet breakfast CHF 19, business lunch CHF 24 (book it that morning), <b>20% off</b> all food and drink including room service, 30% off laundry, free health club and gym, wifi on up to three devices, and a 24-hour crew lounge with a microwave. Room service 06:00–23:00. Reception handles wake-up calls. Strictly non-smoking — CHF 400 penalty.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Built with Claude · 16 September 2026 · for Dinnie<br>Hotel and crew timings from CCD ZRH station info, 26 Jun 2026. Free time from calendar. Verify ticket prices, boat times and the Grossmünster tower opening on the day.</p>
+    </div>
+  </footer>
+
+  <div class="bar">
+    <div class="wrap">
+      <a href="#deadlines" aria-label="See all deadlines">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 1.8"/></svg>
+        <span class="times"><b>Pickup 09:45</b><span class="sep">·</span><span class="lj">Leave city 21:45<span class="sep">·</span></span>Sleep 23:30</span>
+      </a>
+      <a href="#base" class="toBase">Back to base ›</a>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    function enc(s){return encodeURIComponent(s||'');}
+    document.querySelectorAll('[data-cn]').forEach(function(p){
+      var cn=p.getAttribute('data-cn');
+      var a=p.querySelector('[data-map="apple"]'); if(a) a.href='https://maps.apple.com/?q='+enc(cn);
+      var g=p.querySelector('[data-map="gmaps"]'); if(g) g.href='https://www.google.com/maps/search/?api=1&query='+enc(cn);
+    });
+    function flash(btn){
+      var prev=btn.textContent;
+      btn.textContent='Copied ✓'; btn.classList.add('copied');
+      setTimeout(function(){btn.textContent=prev; btn.classList.remove('copied');},1500);
+    }
+    function writeText(t){
+      if(navigator.clipboard&&navigator.clipboard.writeText){return navigator.clipboard.writeText(t);}
+      return new Promise(function(res,rej){
+        var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+        document.body.appendChild(ta);ta.focus();ta.select();
+        try{document.execCommand('copy');res();}catch(e){rej(e);}finally{document.body.removeChild(ta);}
+      });
+    }
+    document.addEventListener('click',function(e){
+      var b=e.target.closest('[data-act="copy"]'); if(!b) return;
+      var host=b.closest('[data-addr],[data-cn]')||document.body;
+      var which=b.getAttribute('data-copy');
+      var text= which==='didi' ? (host.getAttribute('data-didi')||host.getAttribute('data-cn')) : host.getAttribute('data-addr');
+      if(!text) return;
+      writeText(text).then(function(){flash(b);}).catch(function(){flash(b);});
+    });
+  })();
+  </script>
+</body>
+</html>
